@@ -311,7 +311,7 @@ export default function App() {
 
   if (state.mode === 'HOME') {
     return (
-      <div className="min-h-screen bg-art-bg text-art-blue flex flex-col items-center justify-center p-6 font-sans overflow-hidden relative border-8 border-art-amber">
+      <div className="h-screen bg-art-bg text-art-blue flex flex-col items-center justify-center p-4 font-sans overflow-hidden relative border-4 md:border-8 border-art-amber">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
         <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-art-amber rounded-full opacity-10"></div>
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-art-emerald rounded-full opacity-10"></div>
@@ -319,27 +319,27 @@ export default function App() {
         <motion.div 
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-center mb-16 z-10"
+          className="text-center mb-6 md:mb-8 z-10"
         >
-          <div className="flex justify-center mb-8 space-x-3">
-             <button onClick={() => setState(s => ({ ...s, language: 'en' }))} className={`px-4 py-2 rounded-xl font-bold transition-all border-2 ${state.language==='en' ? 'bg-art-amber text-white border-art-amber-dark shadow-md' : 'bg-white/50 text-art-amber border-art-yellow-border hover:bg-white'}`}>EN</button>
-             <button onClick={() => setState(s => ({ ...s, language: 'mn' }))} className={`px-4 py-2 rounded-xl font-bold transition-all border-2 ${state.language==='mn' ? 'bg-art-emerald text-white border-art-emerald-dark shadow-md' : 'bg-white/50 text-art-emerald border-art-yellow-border hover:bg-white'}`}>MN</button>
+          <div className="flex justify-center mb-4 md:mb-6 space-x-2">
+             <button onClick={() => setState(s => ({ ...s, language: 'en' }))} className={`px-3 py-1.5 rounded-xl font-bold transition-all border-2 text-sm ${state.language==='en' ? 'bg-art-amber text-white border-art-amber-dark shadow-md' : 'bg-white/50 text-art-amber border-art-yellow-border hover:bg-white'}`}>EN</button>
+             <button onClick={() => setState(s => ({ ...s, language: 'mn' }))} className={`px-3 py-1.5 rounded-xl font-bold transition-all border-2 text-sm ${state.language==='mn' ? 'bg-art-emerald text-white border-art-emerald-dark shadow-md' : 'bg-white/50 text-art-emerald border-art-yellow-border hover:bg-white'}`}>MN</button>
           </div>
-          <h1 className="text-8xl font-black mb-4 tracking-tighter text-art-blue drop-shadow-sm font-serif">汉字找不同</h1>
-          <p className="text-2xl font-black opacity-60 uppercase tracking-[0.2em] text-art-amber-dark">The Odd One Out</p>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-2 md:mb-3 tracking-tighter text-art-blue drop-shadow-sm font-serif">汉字找不同</h1>
+          <p className="text-lg md:text-xl font-black opacity-60 uppercase tracking-[0.2em] text-art-amber-dark">The Odd One Out</p>
         </motion.div>
 
-        <div className="grid gap-6 w-full max-w-sm z-10">
-          <Button onClick={() => setState(s => ({ ...s, mode: 'LEVEL_SELECT', targetMode: 'ROBOT' }))} className="text-2xl py-6">
-            <Sword className="w-8 h-8" /> {t.robot}
+        <div className="grid gap-3 md:gap-4 w-full max-w-xs md:max-w-sm z-10">
+          <Button onClick={() => setState(s => ({ ...s, mode: 'LEVEL_SELECT', targetMode: 'ROBOT' }))} className="text-xl md:text-2xl py-4 md:py-6">
+            <Sword className="w-6 h-6 md:w-8 md:h-8" /> {t.robot}
           </Button>
           <Button variant="secondary" onClick={() => {
             setState(s => ({ ...s, mode: 'LEVEL_SELECT', targetMode: 'PK' }));
-          }} className="text-2xl py-6">
-            <Users className="w-8 h-8" /> {t.pk}
+          }} className="text-xl md:text-2xl py-4 md:py-6">
+            <Users className="w-6 h-6 md:w-8 md:h-8" /> {t.pk}
           </Button>
-          <Button variant="ghost" onClick={() => setState(s => ({ ...s, mode: 'INTRO' }))} className="text-xl py-4">
-            <Info className="w-6 h-6" /> {t.intro}
+          <Button variant="ghost" onClick={() => setState(s => ({ ...s, mode: 'INTRO' }))} className="text-lg md:text-xl py-3 md:py-4">
+            <Info className="w-5 h-5 md:w-6 md:h-6" /> {t.intro}
           </Button>
         </div>
       </div>
@@ -348,19 +348,19 @@ export default function App() {
 
   if (state.mode === 'INTRO') {
     return (
-      <div className="min-h-screen bg-art-bg text-art-blue flex flex-col items-center justify-center p-8 border-8 border-art-amber relative overflow-hidden">
+      <div className="h-screen bg-art-bg text-art-blue flex flex-col items-center justify-center p-4 md:p-8 border-4 md:border-8 border-art-amber relative overflow-hidden">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
-        <div className="max-w-xl bg-white border-8 border-art-yellow-border p-12 rounded-[3.5rem] shadow-2xl relative z-10">
-          <h2 className="text-5xl font-black mb-8 text-art-emerald font-serif italic text-center">{t.intro}</h2>
+        <div className="max-w-xl w-full bg-white border-4 md:border-8 border-art-yellow-border p-6 md:p-10 rounded-[2rem] md:rounded-[3.5rem] shadow-2xl relative z-10 overflow-y-auto max-h-full">
+          <h2 className="text-3xl md:text-5xl font-black mb-4 md:mb-8 text-art-emerald font-serif italic text-center leading-tight">{t.intro}</h2>
           
-          <div className="space-y-8">
-            <div className="bg-art-yellow-light/30 p-6 rounded-2xl border-l-8 border-art-amber italic">
-              <h3 className="text-xs font-black uppercase text-art-amber-dark mb-1 tracking-widest leading-none">English</h3>
-              <p className="text-lg leading-tight">{UI_TRANSLATIONS.en.rules}</p>
+          <div className="space-y-4 md:space-y-6">
+            <div className="bg-art-yellow-light/30 p-4 md:p-6 rounded-2xl border-l-4 md:border-l-8 border-art-amber italic">
+              <h3 className="text-[10px] font-black uppercase text-art-amber-dark mb-1 tracking-widest leading-none">English</h3>
+              <p className="text-base md:text-lg leading-tight">{UI_TRANSLATIONS.en.rules}</p>
             </div>
-            <div className="bg-art-emerald/10 p-6 rounded-2xl border-l-8 border-art-emerald italic">
-               <h3 className="text-xs font-black uppercase text-art-emerald-dark mb-1 tracking-widest leading-none">Mongolian</h3>
-              <p className="text-lg leading-tight">{UI_TRANSLATIONS.mn.rules}</p>
+            <div className="bg-art-emerald/10 p-4 md:p-6 rounded-2xl border-l-4 md:border-l-8 border-art-emerald italic">
+               <h3 className="text-[10px] font-black uppercase text-art-emerald-dark mb-1 tracking-widest leading-none">Mongolian</h3>
+              <p className="text-base md:text-lg leading-tight">{UI_TRANSLATIONS.mn.rules}</p>
             </div>
           </div>
 
@@ -382,37 +382,37 @@ export default function App() {
     );
 
     return (
-      <div className="min-h-screen bg-art-bg flex flex-col md:flex-row p-6 md:p-12 gap-8 border-8 border-art-amber relative overflow-hidden">
+      <div className="h-screen bg-art-bg flex flex-col md:flex-row p-4 md:p-8 gap-4 md:gap-8 border-4 md:border-8 border-art-amber relative overflow-hidden">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
         
         {/* Section 1: Level List (1x5 Vertical - reduced width) */}
-        <div className="w-full md:w-1/4 flex flex-col items-center z-10 bg-white/40 backdrop-blur-sm p-6 rounded-[3rem] border-4 border-art-yellow-border self-stretch">
+        <div className="w-full md:w-1/4 flex flex-col items-center z-10 bg-white/40 backdrop-blur-sm p-4 md:p-6 rounded-[2rem] border-4 border-art-yellow-border">
           <div className="flex flex-col items-center justify-center flex-1 w-full">
-            <h2 className="text-5xl font-black mb-10 text-art-blue font-serif italic text-center underline decoration-art-amber decoration-8 underline-offset-8">LEVEL</h2>
-            <div className="flex flex-col w-full gap-3">
+            <h2 className="text-3xl md:text-4xl font-black mb-4 md:mb-8 text-art-blue font-serif italic text-center underline decoration-art-amber decoration-4 md:decoration-8 underline-offset-4 md:underline-offset-8">LEVEL</h2>
+            <div className="flex flex-col w-full gap-2">
               {YCT_DATA.map(lv => (
                 <button 
                   key={lv.id}
                   onClick={() => setState(s => ({ ...s, level: lv.id }))}
-                  className={`py-4 rounded-[1.5rem] font-black text-2xl transition-all border-4 flex items-center justify-center gap-4 ${state.level === lv.id ? 'bg-art-amber text-white border-art-amber-dark scale-105 z-10 shadow-xl' : 'bg-white text-art-blue border-art-yellow-border hover:bg-art-yellow-light'}`}
+                  className={`py-2 md:py-3 rounded-[1rem] md:rounded-[1.5rem] font-black text-xl md:text-2xl transition-all border-2 md:border-4 flex items-center justify-center gap-2 md:gap-4 ${state.level === lv.id ? 'bg-art-amber text-white border-art-amber-dark scale-105 z-10 shadow-lg' : 'bg-white text-art-blue border-art-yellow-border hover:bg-art-yellow-light'}`}
                 >
                   YCT {lv.id}
                 </button>
               ))}
             </div>
           </div>
-          <div className="mt-8 w-full">
-            <Button variant="ghost" onClick={() => setState(s => ({ ...s, mode: 'HOME' }))} className="w-full text-xl py-4">
-              <ChevronLeft className="w-6 h-6 mr-2" /> {t.back}
+          <div className="mt-4 w-full">
+            <Button variant="ghost" onClick={() => setState(s => ({ ...s, mode: 'HOME' }))} className="w-full text-base md:text-lg py-2 md:py-3">
+              <ChevronLeft className="w-5 h-5 mr-1" /> {t.back}
             </Button>
           </div>
         </div>
 
         {/* Section 2: Character Pairs Selection (increased width) */}
-        <div className="w-full md:w-3/4 flex flex-col z-10 bg-white border-8 border-art-yellow-border p-8 rounded-[4rem] shadow-2xl relative self-stretch">
-          <div className="flex justify-between items-center mb-10 pb-6 border-b-4 border-art-bg">
-            <h2 className="text-5xl font-black text-art-emerald font-serif italic">{state.language === 'mn' ? 'Хятад ханз' : 'Chinese Character'}</h2>
-            <div className="flex flex-col items-center gap-2">
+        <div className="w-full md:w-3/4 flex flex-col z-10 bg-white border-4 md:border-8 border-art-yellow-border p-4 md:p-6 rounded-[2rem] md:rounded-[3.5rem] shadow-2xl relative overflow-hidden">
+          <div className="flex justify-between items-center mb-4 md:mb-6 pb-4 border-b-2 md:border-b-4 border-art-bg">
+            <h2 className="text-3xl md:text-4xl font-black text-art-emerald font-serif italic leading-tight">{state.language === 'mn' ? 'Хятад ханз' : 'Chinese Character'}</h2>
+            <div className="flex flex-col items-center">
               <button 
                 onClick={() => {
                    const currentLevelData = YCT_DATA.find(lv => lv.id === state.level);
@@ -420,55 +420,47 @@ export default function App() {
                    const randomPair = allPairs[Math.floor(Math.random() * allPairs.length)];
                    if (randomPair) startGameWithPair(randomPair, state.targetMode);
                 }}
-                className="bg-art-amber text-white px-10 py-4 rounded-full font-black shadow-lg hover:bg-art-amber-dark transition-all flex items-center gap-4 transform hover:scale-105 active:scale-95"
+                className="bg-art-amber text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-black shadow-lg hover:bg-art-amber-dark transition-all flex items-center gap-2 md:gap-3 transform hover:scale-105 active:scale-95"
               >
-                 <Zap className="w-8 h-8 fill-white" />
-                 <span className="text-xl uppercase tracking-widest">{t.random}</span>
+                 <Zap className="w-5 h-5 md:w-6 md:h-6 fill-white" />
+                 <span className="text-sm md:text-base uppercase tracking-widest">{t.random}</span>
               </button>
-              <div className="flex flex-col items-center">
-                 <span className="text-[10px] font-black text-art-amber-dark uppercase tracking-tighter bg-white px-3 py-0.5 rounded-full border border-art-amber-dark/20 shadow-sm font-sans">Level Randomizer</span>
-                 <span className="text-[8px] font-medium text-gray-400 italic">Play unknown pairs!</span>
-              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 overflow-y-auto pr-6 max-h-[65vh] scrollbar-thin scrollbar-thumb-art-amber p-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto pr-2 flex-1 scrollbar-thin scrollbar-thumb-art-amber p-1">
             {uniquePairs.map((pair, i) => (
               <button 
                 key={i}
                 onClick={() => startGameWithPair(pair, state.targetMode)}
-                className="bg-white hover:bg-art-yellow-light/10 p-6 rounded-[2.5rem] border-4 border-art-yellow-border hover:border-art-emerald transition-all flex items-center justify-between group shadow-lg hover:shadow-2xl active:scale-95 gap-4"
+                className="bg-white hover:bg-art-yellow-light/10 p-3 md:p-4 rounded-[1.5rem] md:rounded-[2rem] border-2 md:border-4 border-art-yellow-border hover:border-art-emerald transition-all flex items-center justify-between group shadow-md hover:shadow-xl active:scale-95 gap-3"
               >
                 {/* Left: Target */}
                 <div className="flex-1 flex flex-col items-center">
-                  <div className="text-[23px] font-black text-art-emerald-dark lowercase tracking-tight leading-none mb-1">{pair.pinyin.toLowerCase()}</div>
-                  <div className="text-7xl font-serif text-black group-hover:scale-110 transition-transform mb-1">{pair.target}</div>
-                  <div className="text-[21px] font-bold text-gray-500 truncate w-full text-center leading-none italic">
+                  <div className="text-[14px] md:text-[16px] font-black text-art-emerald-dark lowercase tracking-tight leading-none mb-1">{pair.pinyin.toLowerCase()}</div>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-black group-hover:scale-110 transition-transform mb-1">{pair.target}</div>
+                  <div className="text-[12px] md:text-[14px] font-bold text-gray-500 truncate w-full text-center leading-tight italic">
                     {state.language === 'mn' ? pair.translation.mn : pair.translation.en}
                   </div>
                 </div>
 
                 {/* VS Divider */}
                 <div className="flex flex-col items-center">
-                   <div className="w-px h-8 bg-gray-100"></div>
-                   <span className="text-xl font-black text-gray-300 my-1 italic">VS</span>
-                   <div className="w-px h-8 bg-gray-100"></div>
+                   <div className="w-px h-6 bg-gray-100"></div>
+                   <span className="text-sm font-black text-gray-300 my-1 italic">VS</span>
+                   <div className="w-px h-6 bg-gray-100"></div>
                 </div>
 
                 {/* Right: Distractor */}
                 <div className="flex-1 flex flex-col items-center">
-                  <div className="text-[23px] font-black text-gray-500 lowercase tracking-tight leading-none mb-1">{pair.distractorPinyin.toLowerCase()}</div>
-                  <div className="text-7xl font-serif text-gray-400 group-hover:scale-110 transition-transform mb-1">{pair.distractor}</div>
-                  <div className="text-[21px] font-bold text-gray-400 truncate w-full text-center leading-none italic">
+                  <div className="text-[14px] md:text-[16px] font-black text-gray-500 lowercase tracking-tight leading-none mb-1">{pair.distractorPinyin.toLowerCase()}</div>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-400 group-hover:scale-110 transition-transform mb-1">{pair.distractor}</div>
+                  <div className="text-[12px] md:text-[14px] font-bold text-gray-400 truncate w-full text-center leading-tight italic">
                     {state.language === 'mn' ? pair.distractorTranslation.mn : pair.distractorTranslation.en}
                   </div>
                 </div>
               </button>
             ))}
-          </div>
-
-          <div className="mt-auto pt-6 text-center italic text-art-blue/40 text-sm font-medium">
-             Select a specific character pair or choose Randomly to begin!
           </div>
         </div>
       </div>
@@ -477,58 +469,58 @@ export default function App() {
 
   if (state.mode === 'PREPARE') {
     return (
-      <div className="h-screen bg-art-bg text-art-blue flex flex-col items-center justify-between py-10 px-8 border-8 border-art-amber relative overflow-hidden">
+      <div className="h-screen bg-art-bg text-art-blue flex flex-col items-center justify-between py-6 md:py-8 px-4 md:px-8 border-4 md:border-8 border-art-amber relative overflow-hidden">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
         
         {/* Top Left Label */}
-        <div className="absolute top-8 left-8">
-           <div className="text-[10px] font-black opacity-30 uppercase tracking-[0.2em] leading-none mb-1">Chinese Character</div>
-           <div className="text-4xl font-mono font-black text-art-blue">YCT{state.level}</div>
+        <div className="absolute top-4 left-4 md:top-8 md:left-8">
+           <div className="text-[8px] md:text-[10px] font-black opacity-30 uppercase tracking-[0.2em] leading-none mb-1">Chinese Character</div>
+           <div className="text-xl md:text-3xl font-mono font-black text-art-blue">YCT{state.level}</div>
         </div>
 
-        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center z-10 w-full max-w-5xl flex flex-col items-center flex-1 justify-center">
-          <h2 className="text-6xl font-black mb-12 bg-white border-4 border-art-yellow-border px-16 py-6 rounded-full shadow-2xl font-serif italic inline-block leading-none">{t.prepare_title}</h2>
+        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center z-10 w-full max-w-5xl flex flex-col items-center flex-1 justify-center py-4">
+          <h2 className="text-3xl md:text-5xl font-black mb-6 md:mb-10 bg-white border-2 md:border-4 border-art-yellow-border px-8 md:px-12 py-3 md:py-4 rounded-full shadow-xl font-serif italic inline-block leading-none">{t.prepare_title}</h2>
           
-          <div className="flex items-center justify-center gap-8 md:gap-20 mb-12 px-4 w-full">
-            {/* Left: Distractor (对比字) */}
-            <div className="flex-1 flex flex-col items-center bg-white p-8 md:p-10 rounded-[3.5rem] border-4 border-art-yellow-border shadow-2xl transform -rotate-3 transition-all hover:rotate-0">
-               <div className="text-[20px] font-black text-gray-400 lowercase mb-2 tracking-wide uppercase">{activeSessionPair?.distractorPinyin.toLowerCase()}</div>
-               <div className="text-8xl md:text-[10rem] font-serif text-gray-700 relative leading-none">
+          <div className="flex items-center justify-center gap-4 md:gap-12 lg:gap-20 mb-6 md:mb-10 px-2 md:px-4 w-full">
+            {/* Left: Distractor */}
+            <div className="flex-1 flex flex-col items-center bg-white p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] border-2 md:border-4 border-art-yellow-border shadow-xl transform -rotate-2 transition-all hover:rotate-0">
+               <div className="text-[12px] md:text-[16px] font-black text-gray-400 lowercase mb-1 tracking-wide">{activeSessionPair?.distractorPinyin.toLowerCase()}</div>
+               <div className="text-6xl md:text-[8rem] lg:text-[10rem] font-serif text-gray-700 relative leading-none">
                   {activeSessionPair?.distractor}
                </div>
-               <div className="text-sm font-bold text-gray-400 italic mt-4">
+               <div className="text-[10px] md:text-sm font-bold text-gray-400 italic mt-2">
                   {state.language === 'mn' ? activeSessionPair?.distractorTranslation.mn : activeSessionPair?.distractorTranslation.en}
                </div>
-               <span className="text-[10px] font-black uppercase tracking-widest mt-4 text-gray-300 bg-gray-50 px-3 py-1 rounded-full">Distractor</span>
+               <span className="text-[8px] md:text-[10px] font-black uppercase tracking-widest mt-2 text-gray-300 bg-gray-50 px-2 py-0.5 rounded-full">Distractor</span>
             </div>
             
-            <div className="text-8xl text-art-emerald-dark font-black tracking-tighter drop-shadow-[6px_6px_0_rgba(16,185,129,0.3)] animate-pulse leading-none">VS</div>
+            <div className="text-4xl md:text-6xl lg:text-8xl text-art-emerald-dark font-black tracking-tighter drop-shadow-[4px_4px_0_rgba(16,185,129,0.3)] leading-none">VS</div>
             
-            {/* Right: Target (目标字) with Emerald Glow/Border */}
-            <div className="flex-1 flex flex-col items-center bg-white p-8 md:p-10 rounded-[3.5rem] border-4 border-art-emerald shadow-lg transform -rotate-1 relative group bg-art-yellow-light/10">
-               <div className="text-[56px] font-black text-art-emerald-dark lowercase mb-6 tracking-tighter leading-none">{activeSessionPair?.pinyin.toLowerCase()}</div>
-               <div className="text-8xl md:text-[12rem] font-serif text-art-blue font-black relative group leading-none">
+            {/* Right: Target */}
+            <div className="flex-1 flex flex-col items-center bg-white p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] border-2 md:border-4 border-art-emerald shadow-lg transform rotate-1 relative group bg-art-yellow-light/10">
+               <div className="text-[32px] md:text-[48px] font-black text-art-emerald-dark lowercase mb-2 md:mb-4 tracking-tighter leading-none">{activeSessionPair?.pinyin.toLowerCase()}</div>
+               <div className="text-6xl md:text-[10rem] lg:text-[12rem] font-serif text-art-blue font-black relative group leading-none">
                   <span className="relative z-10">{activeSessionPair?.target}</span>
-                  <div className="absolute inset-0 bg-art-emerald/10 blur-3xl scale-125 group-hover:scale-150 transition-transform duration-1000"></div>
+                  <div className="absolute inset-0 bg-art-emerald/10 blur-3xl scale-125"></div>
                </div>
-               <div className="text-2xl font-black text-art-emerald italic mt-6">
+               <div className="text-lg md:text-2xl font-black text-art-emerald italic mt-2 md:mt-4">
                   {state.language === 'mn' ? activeSessionPair?.translation.mn : activeSessionPair?.translation.en}
                </div>
-               <span className="text-[14px] font-black uppercase tracking-widest mt-6 text-art-emerald-dark bg-art-emerald/10 px-8 py-2 rounded-full">{t.prepare_desc}</span>
+               <span className="text-[10px] md:text-[14px] font-black uppercase tracking-widest mt-2 md:mt-4 text-art-emerald-dark bg-art-emerald/10 px-4 md:px-6 py-1 md:py-2 rounded-full">{t.prepare_desc}</span>
             </div>
           </div>
  
-          <div className="bg-white border-4 border-art-amber px-10 py-6 rounded-3xl shadow-lg mb-20 max-w-2xl mx-auto border-dashed relative -translate-y-24">
-             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-4 text-[10px] font-black text-art-amber uppercase tracking-widest">Analysis</div>
-            <p className="text-2xl font-black text-art-blue italic leading-tight text-center">
+          <div className="bg-white border-2 md:border-4 border-art-amber px-6 md:px-10 py-3 md:py-5 rounded-2xl md:rounded-3xl shadow-lg mb-6 md:mb-10 max-w-2xl mx-auto border-dashed relative">
+             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2 md:px-4 text-[8px] md:text-[10px] font-black text-art-amber uppercase tracking-widest">Analysis</div>
+            <p className="text-base md:text-2xl font-black text-art-blue italic leading-tight text-center">
                {activeSessionPair?.difference}
             </p>
           </div>
 
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full max-w-2xl px-4 mt-4 -translate-y-24">
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full max-w-lg px-4">
              <Button 
                onClick={startActualPlay} 
-               className="text-6xl w-full py-12 bg-art-yellow text-art-blue border-art-yellow-border shadow-[8px_10px_0_rgba(255,221,0,0.4)] transform transition-all hover:-translate-y-2 font-black hover:shadow-[0_0_40px_rgba(255,221,0,0.6)] active:shadow-inner"
+               className="text-3xl md:text-5xl lg:text-6xl w-full py-4 md:py-8 lg:py-10 bg-art-yellow text-art-blue border-art-yellow-border shadow-[4px_6px_0_rgba(255,221,0,0.4)] transform transition-all hover:-translate-y-1 font-black"
              >
                {t.start}
              </Button>
@@ -543,7 +535,7 @@ export default function App() {
     const now = Date.now();
     
     return (
-      <div className="min-h-screen bg-art-bg text-art-blue flex flex-col items-center overflow-hidden relative border-8 border-art-amber">
+      <div className="h-screen bg-art-bg text-art-blue flex flex-col items-center overflow-hidden relative border-4 md:border-8 border-art-amber">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
         <PKHeader 
           player1Score={pkState.player1Score}
@@ -556,14 +548,14 @@ export default function App() {
         />
 
         {/* PK Grid Layout */}
-        <div className="flex-1 w-full flex flex-row overflow-hidden relative z-10 -translate-y-2">
+        <div className="flex-1 w-full flex flex-row overflow-hidden relative z-10">
            {/* Center Divider */}
-           <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white/20 z-10 hidden md:block"></div>
+           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-white/20 z-10 hidden md:block"></div>
 
            {/* Player 1 View */}
-           <div className="flex-1 flex flex-col items-center justify-center p-4 relative group">
+           <div className="flex-1 flex flex-col items-center justify-center p-2 md:p-4 relative group">
               <div className={`
-                transition-all duration-300
+                transition-all duration-300 transform scale-75 md:scale-90 lg:scale-100
                 ${pkState.player1CooledDownUntil > now ? 'brightness-50 grayscale' : ''}
               `}>
                 <PKMatrix 
@@ -579,23 +571,23 @@ export default function App() {
                     initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
                     className="absolute inset-0 pointer-events-none z-20 flex items-center justify-center"
                   >
-                    <div className="w-48 h-48 bg-black/80 rounded-full blur-2xl animate-ping" />
-                    <div className="absolute w-32 h-32 bg-zinc-900 rounded-full blur-xl" />
+                    <div className="w-24 h-24 md:w-32 md:h-32 bg-black/80 rounded-full blur-xl animate-ping" />
+                    <div className="absolute w-16 h-16 md:w-20 md:h-20 bg-zinc-900 rounded-full blur-lg" />
                   </motion.div>
                 )}
               </AnimatePresence>
               {pkState.player1CooledDownUntil > now && (
                 <div className="absolute inset-0 flex items-center justify-center z-30">
-                  <div className="bg-red-600 px-6 py-2 rounded-full font-black text-xl animate-pulse">COOLING...</div>
+                  <div className="bg-red-600 px-4 py-1 rounded-full font-black text-sm md:text-base animate-pulse">COOLING...</div>
                 </div>
               )}
-              <div className="mt-4 text-sm font-bold text-blue-400 uppercase tracking-widest">Player 1</div>
+              <div className="mt-2 text-[10px] md:text-sm font-bold text-blue-400 uppercase tracking-widest">Player 1</div>
            </div>
 
            {/* Player 2 View */}
-           <div className="flex-1 flex flex-col items-center justify-center p-4 relative group">
+           <div className="flex-1 flex flex-col items-center justify-center p-2 md:p-4 relative group">
               <div className={`
-                transition-all duration-300
+                transition-all duration-300 transform scale-75 md:scale-90 lg:scale-100
                 ${pkState.player2CooledDownUntil > now ? 'brightness-50 grayscale' : ''}
               `}>
                 <PKMatrix 
@@ -611,17 +603,17 @@ export default function App() {
                     initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
                     className="absolute inset-0 pointer-events-none z-20 flex items-center justify-center"
                   >
-                    <div className="w-48 h-48 bg-black/80 rounded-full blur-2xl animate-ping" />
-                    <div className="absolute w-32 h-32 bg-zinc-900 rounded-full blur-xl" />
+                    <div className="w-24 h-24 md:w-32 md:h-32 bg-black/80 rounded-full blur-xl animate-ping" />
+                    <div className="absolute w-16 h-16 md:w-20 md:h-20 bg-zinc-900 rounded-full blur-lg" />
                   </motion.div>
                 )}
               </AnimatePresence>
               {pkState.player2CooledDownUntil > now && (
                 <div className="absolute inset-0 flex items-center justify-center z-30">
-                  <div className="bg-red-600 px-6 py-2 rounded-full font-black text-xl animate-pulse">COOLING...</div>
+                  <div className="bg-red-600 px-4 py-1 rounded-full font-black text-sm md:text-base animate-pulse">COOLING...</div>
                 </div>
               )}
-              <div className="mt-4 text-sm font-bold text-red-400 uppercase tracking-widest">Player 2</div>
+              <div className="mt-2 text-[10px] md:text-sm font-bold text-red-400 uppercase tracking-widest">Player 2</div>
            </div>
         </div>
 
@@ -662,7 +654,7 @@ export default function App() {
     const size = state.phase === 'EASY' ? 4 : state.phase === 'MEDIUM' ? 6 : 8;
     
     return (
-      <div className="min-h-screen bg-art-bg text-art-blue flex flex-col items-center relative border-8 border-art-amber overflow-hidden">
+      <div className="h-screen bg-art-bg text-art-blue flex flex-col items-center relative border-4 md:border-8 border-art-amber overflow-hidden">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
         <Header 
           score={state.score} 
@@ -675,26 +667,19 @@ export default function App() {
         />
 
       <div className="flex-1 w-full bg-art-bg relative overflow-hidden flex items-center justify-center">
-        {/* Background Decorations - Subtle icons instead of characters */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.05] overflow-hidden">
-           <Zap className="absolute top-[10%] left-[5%] w-32 h-32 rotate-12 text-art-amber" />
-           <Target className="absolute top-[60%] right-[10%] w-48 h-48 -rotate-12 text-art-emerald" />
-           <Trophy className="absolute bottom-[5%] left-[15%] w-24 h-24 text-art-blue" />
-           <Circle className="absolute top-[20%] right-[25%] w-16 h-16 text-art-amber" />
-           <Square className="absolute bottom-[40%] right-[5%] w-32 h-32 rotate-[45deg] text-art-yellow" />
-           <Zap className="absolute top-[30%] right-[15%] w-20 h-20 -rotate-12 text-art-blue opacity-50" />
+        {/* Background Decorations */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] overflow-hidden">
+           <Zap className="absolute top-[10%] left-[5%] w-24 h-24 rotate-12 text-art-amber" />
+           <Target className="absolute top-[60%] right-[10%] w-32 h-32 -rotate-12 text-art-emerald" />
+           <Trophy className="absolute bottom-[5%] left-[15%] w-16 h-16 text-art-blue" />
         </div>
         
-        <div className="absolute top-20 left-1/4 w-32 h-32 bg-art-amber rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-        <div className="absolute bottom-20 right-1/4 w-40 h-40 bg-art-emerald rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-
-        {/* Props bar - Floating closer to center */}
-        <div className="absolute top-1/2 left-44 -translate-y-1/2 flex flex-col items-center gap-6 z-40">
+        {/* Props bar - Adaptive positioning */}
+        <div className="absolute top-1/2 left-4 md:left-12 lg:left-32 -translate-y-1/2 flex flex-col items-center gap-4 z-40">
             <button 
               disabled={isHintActive}
               onClick={() => {
                 if (itemCharges > 0) {
-                  // Pick a random unclicked target index
                   const unclickedTargets = matrix
                     .map((char, idx) => ({ char, idx }))
                     .filter(item => item.char === actualTarget && !targetsFound.includes(item.idx));
@@ -704,7 +689,6 @@ export default function App() {
                     setHintedIndex(randomPick.idx);
                     setIsHintActive(true);
                     setItemCharges(0);
-                    // Short hint duration: 1.5s
                     setTimeout(() => {
                       setIsHintActive(false);
                       setHintedIndex(null);
@@ -714,20 +698,16 @@ export default function App() {
                   setShowMagnifier(true); 
                 }
               }}
-              className={`flex flex-col items-center gap-4 p-8 rounded-[2.5rem] font-black shadow-2xl border-4 transition-all ${isHintActive || (itemCharges === 0 && hasEarnedItem) ? 'bg-gray-200 border-gray-300 cursor-not-allowed text-gray-400' : 'bg-white border-art-amber text-art-amber-dark hover:scale-110 active:scale-95 hover:rotate-2'}`}
+              className={`flex flex-col items-center gap-2 p-4 md:p-6 rounded-[2rem] font-black shadow-xl border-4 transition-all ${isHintActive || (itemCharges === 0 && hasEarnedItem) ? 'bg-gray-200 border-gray-300 cursor-not-allowed text-gray-400' : 'bg-white border-art-amber text-art-amber-dark hover:scale-110 active:scale-95'}`}
             >
-              <Zap className={`w-12 h-12 ${itemCharges > 0 ? 'fill-art-amber animate-bounce' : ''}`} />
+              <Zap className={`w-8 h-8 md:w-10 md:h-10 ${itemCharges > 0 ? 'fill-art-amber animate-bounce' : ''}`} />
               <div className="flex flex-col items-center">
-                <span className="text-2xl uppercase tracking-tighter">{itemCharges}/1</span>
-                <span className="text-[10px] uppercase font-sans font-bold tracking-widest mt-1 opacity-60">
-                   {itemCharges > 0 ? "Use Hint" : hasEarnedItem ? "No More" : "Earn"}
-                </span>
+                <span className="text-lg md:text-xl uppercase tracking-tighter">{itemCharges}/1</span>
               </div>
             </button>
-            <div className="w-1 h-20 bg-gradient-to-b from-art-amber/30 to-transparent rounded-full shadow-sm"></div>
         </div>
 
-        <div className="flex-1 w-full flex items-center justify-center p-8 z-10 -translate-y-3">
+        <div className="flex-1 w-full flex items-center justify-center p-4 md:p-8 z-10">
           <AnimatePresence mode="popLayout">
             <motion.div 
               key={`${state.phase}-${state.advancedResetCount}-${actualTarget}`}
@@ -735,13 +715,13 @@ export default function App() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
               transition={{ duration: 0.2 }}
-              className="grid gap-2 bg-art-yellow-light p-8 rounded-[3.5rem] border-8 border-art-yellow-border shadow-2xl backdrop-blur-sm"
+              className="grid gap-1 md:gap-2 bg-art-yellow-light p-4 md:p-6 rounded-[2rem] md:rounded-[3.5rem] border-4 md:border-8 border-art-yellow-border shadow-2xl backdrop-blur-sm"
               style={{ 
                 gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))`,
-                width: 'min(90vw, 680px)',
-                height: 'min(90vw, 680px)',
+                width: 'min(85vw, 85vh, 600px)',
+                height: 'min(85vw, 85vh, 600px)',
                 '--grid-size': size,
-                '--grid-size-base': '340px'
+                '--grid-size-base': 'min(85vw, 85vh, 600px)'
               } as any}
             >
               {matrix.map((char, i) => (
@@ -749,12 +729,12 @@ export default function App() {
                   key={i}
                   onClick={() => handleCellClick(i)}
                   className={`
-                    aspect-square flex items-center justify-center rounded-2xl md:rounded-3xl font-serif font-bold shadow-md
-                    transition-[transform,background-color,border-color,box-shadow,ring] duration-300
-                    ${targetsFound.includes(i) ? 'bg-art-emerald/10 text-art-emerald border-4 border-art-emerald scale-90' : 'bg-white border-4 border-art-yellow-border text-gray-800 hover:scale-105 active:scale-95'}
-                    ${isHintActive && i === hintedIndex ? 'ring-8 ring-art-amber ring-offset-4 animate-pulse z-20' : ''}
+                    aspect-square flex items-center justify-center rounded-xl md:rounded-2xl font-serif font-bold shadow-md
+                    transition-all duration-300
+                    ${targetsFound.includes(i) ? 'bg-art-emerald/10 text-art-emerald border-2 md:border-4 border-art-emerald scale-90' : 'bg-white border-2 md:border-4 border-art-yellow-border text-gray-800 hover:scale-105 active:scale-95'}
+                    ${isHintActive && i === hintedIndex ? 'ring-4 md:ring-8 ring-art-amber ring-offset-2 animate-pulse z-20' : ''}
                   `}
-                  style={{ fontSize: 'calc(var(--grid-size-base) / (var(--grid-size) * 1.05))' } as any}
+                  style={{ fontSize: 'calc(var(--grid-size-base) / (var(--grid-size) * 1.5))' } as any}
                   disabled={targetsFound.includes(i)}
                 >
                   <span className="leading-none select-none">{char}</span>
@@ -837,81 +817,76 @@ export default function App() {
        else if (p2Score > p1Score) resultTitle = "P2 " + t.win;
        else resultTitle = t.draw;
     } else {
-       // Template 10: >80% (火眼金睛), 60-80% (超级明星), <60% (继续努力)
-       // Max score estimation: Elementary (10), Medium (20-30), Advanced (40-50) * 2 reset = ~150-180
-       // Let's use a simpler count based calculation
-       const accuracy = state.score / 150 * 100; // Normalized estimate
+       const accuracy = state.score / 150 * 100;
        if (accuracy >= 80) resultTitle = t.result_perfect;
        else if (accuracy >= 60) resultTitle = t.result_good;
        else resultTitle = t.result_try_again;
     }
     
     return (
-      <div className="min-h-screen bg-art-bg text-art-blue flex flex-col items-center justify-center p-6 border-8 border-art-amber relative overflow-hidden">
+      <div className="h-screen bg-art-bg text-art-blue flex flex-col items-center justify-center p-4 md:p-6 border-4 md:border-8 border-art-amber relative overflow-hidden">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
         <motion.div 
           initial={{ y: 50, opacity: 0 }} 
           animate={{ y: 0, opacity: 1 }}
-          className="w-full max-w-2xl text-center z-10"
+          className="w-full max-w-2xl text-center z-10 scale-90 md:scale-100"
         >
-          <div className="mb-4">
-             <h1 className="text-7xl font-black tracking-tighter font-serif italic text-art-blue shadow-white drop-shadow-md">{resultTitle}</h1>
+          <div className="mb-2 md:mb-4">
+             <h1 className="text-5xl md:text-7xl font-black tracking-tighter font-serif italic text-art-blue shadow-white drop-shadow-md">{resultTitle}</h1>
           </div>
           
-          <div className="grid grid-cols-2 gap-8 mb-12">
-            <div className="bg-white rounded-[2.5rem] p-10 border-4 border-art-amber shadow-lg transform -rotate-1 relative group">
-               <div className="absolute -top-2 -left-2 bg-art-amber text-white p-2 rounded-full shadow-md z-20"><Trophy className="w-5 h-5"/></div>
-               <div className="text-[12px] opacity-40 uppercase font-black tracking-widest mb-2">{isPK ? 'Player 1' : t.score}</div>
-               <div className="text-6xl font-mono font-black text-art-amber-dark">{p1Score.toString().padStart(3, '0')}</div>
+          <div className="grid grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-10">
+            <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 border-4 border-art-amber shadow-lg transform -rotate-1 relative group">
+               <div className="absolute -top-2 -left-2 bg-art-amber text-white p-2 rounded-full shadow-md z-20"><Trophy className="w-4 h-4 md:w-5 md:h-5"/></div>
+               <div className="text-[10px] md:text-[12px] opacity-40 uppercase font-black tracking-widest mb-1 md:mb-2">{isPK ? 'Player 1' : t.score}</div>
+               <div className="text-4xl md:text-6xl font-mono font-black text-art-amber-dark">{p1Score.toString().padStart(3, '0')}</div>
             </div>
-            <div className="bg-white rounded-[2.5rem] p-10 border-4 border-art-emerald shadow-lg transform rotate-1 relative group">
-               <div className="absolute -top-2 -right-2 bg-art-emerald text-white p-2 rounded-full shadow-md z-20"><CheckCircle2 className="w-5 h-5"/></div>
-               <div className="text-[12px] opacity-40 uppercase font-black tracking-widest mb-2">{isPK ? 'Player 2' : 'Total Found' }</div>
-               <div className="text-6xl font-mono font-black text-art-emerald-dark">{(isPK ? p2Score : state.score / 10).toString().padStart(isPK ? 3 : 2, '0')}</div>
+            <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 border-4 border-art-emerald shadow-lg transform rotate-1 relative group">
+               <div className="absolute -top-2 -right-2 bg-art-emerald text-white p-2 rounded-full shadow-md z-20"><CheckCircle2 className="w-4 h-4 md:w-5 md:h-5"/></div>
+               <div className="text-[10px] md:text-[12px] opacity-40 uppercase font-black tracking-widest mb-1 md:mb-2">{isPK ? 'Player 2' : 'Total Found' }</div>
+               <div className="text-4xl md:text-6xl font-mono font-black text-art-emerald-dark">{(isPK ? p2Score : state.score / 10).toString().padStart(isPK ? 3 : 2, '0')}</div>
             </div>
           </div>
 
-          <div className="bg-art-yellow-light p-10 rounded-[3rem] border-4 border-dashed border-art-yellow-border mb-16 shadow-inner relative group overflow-hidden">
+          <div className="bg-art-yellow-light p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] border-4 border-dashed border-art-yellow-border mb-8 md:mb-12 shadow-inner relative group overflow-hidden">
              <div className="absolute inset-0 art-dots opacity-5 pointer-events-none"></div>
-             <div className="flex justify-center gap-12 items-center mb-6 relative z-10">
-                {/* Left: Distractor */}
+             <div className="flex justify-center gap-8 md:gap-12 items-center mb-4 md:mb-6 relative z-10">
                 <div className="flex flex-col items-center">
-                   <span className="text-xl font-bold text-gray-600 lowercase">{activeSessionPair?.distractorPinyin.toLowerCase()}</span>
-                   <span className="text-8xl text-art-amber-dark font-serif opacity-30">{activeSessionPair?.distractor}</span>
-                   <span className="text-sm font-medium text-gray-500 italic">
+                   <span className="text-lg md:text-xl font-bold text-gray-600 lowercase">{activeSessionPair?.distractorPinyin.toLowerCase()}</span>
+                   <span className="text-6xl md:text-8xl text-art-amber-dark font-serif opacity-30">{activeSessionPair?.distractor}</span>
+                   <span className="text-[10px] md:text-sm font-medium text-gray-500 italic">
                       {state.language === 'mn' ? activeSessionPair?.distractorTranslation.mn : activeSessionPair?.distractorTranslation.en}
                    </span>
                 </div>
 
                 <div className="flex flex-col items-center">
-                   <div className="w-px h-12 bg-art-yellow-border"></div>
-                   <span className="text-xl font-black text-art-blue/40 my-2 tracking-tighter">VS</span>
-                   <div className="w-px h-12 bg-art-yellow-border"></div>
+                   <div className="w-px h-8 md:h-12 bg-art-yellow-border"></div>
+                   <span className="text-lg md:text-xl font-black text-art-blue/40 my-1 md:my-2 tracking-tighter">VS</span>
+                   <div className="w-px h-8 md:h-12 bg-art-yellow-border"></div>
                 </div>
 
-                {/* Right: Target */}
                 <div className="flex flex-col items-center">
-                   <span className="text-xl font-black text-art-emerald-dark lowercase">{activeSessionPair?.pinyin.toLowerCase()}</span>
-                   <span className="text-9xl text-art-emerald font-serif font-black">{activeSessionPair?.target}</span>
-                   <span className="text-sm font-black text-art-emerald-dark italic">
+                   <span className="text-lg md:text-xl font-black text-art-emerald-dark lowercase">{activeSessionPair?.pinyin.toLowerCase()}</span>
+                   <span className="text-7xl md:text-9xl text-art-emerald font-serif font-black">{activeSessionPair?.target}</span>
+                   <span className="text-[10px] md:text-sm font-black text-art-emerald-dark italic">
                       {state.language === 'mn' ? activeSessionPair?.translation.mn : activeSessionPair?.translation.en}
                    </span>
                 </div>
              </div>
-             <div className="bg-white px-8 py-3 rounded-2xl border-2 border-art-yellow-border inline-block relative z-10">
-                <p className="text-xl font-bold italic text-art-emerald-dark">"{activeSessionPair?.difference}"</p>
+             <div className="bg-white px-6 md:px-8 py-2 md:py-3 rounded-2xl border-2 border-art-yellow-border inline-block relative z-10">
+                <p className="text-lg md:text-xl font-bold italic text-art-emerald-dark">"{activeSessionPair?.difference}"</p>
              </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Button variant="ghost" onClick={() => setState(s => ({ ...s, mode: 'HOME' }))}>
-              <HomeIcon className="w-6 h-6" /> {t.home}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <Button variant="ghost" className="py-3 md:py-4" onClick={() => setState(s => ({ ...s, mode: 'HOME' }))}>
+              <HomeIcon className="w-5 h-5 md:w-6 md:h-6" /> {t.home}
             </Button>
-            <Button variant="secondary" onClick={() => startActualPlay()}>
-              <RefreshCw className="w-6 h-6" /> {t.retry}
+            <Button variant="secondary" className="py-3 md:py-4" onClick={() => startActualPlay()}>
+              <RefreshCw className="w-5 h-5 md:w-6 md:h-6" /> {t.retry}
             </Button>
-            <Button onClick={() => setState(s => ({ ...s, mode: 'LEVEL_SELECT' }))}>
-              <Zap className="w-6 h-6" /> {t.next}
+            <Button className="py-3 md:py-4" onClick={() => setState(s => ({ ...s, mode: 'LEVEL_SELECT' }))}>
+              <Zap className="w-5 h-5 md:w-6 md:h-6" /> {t.next}
             </Button>
           </div>
         </motion.div>
