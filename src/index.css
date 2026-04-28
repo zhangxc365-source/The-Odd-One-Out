@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", "Georgia", serif;
+  
+  --color-art-bg: #FFFBEB;
+  --color-art-amber: #F59E0B;
+  --color-art-amber-dark: #D97706;
+  --color-art-emerald: #10B981;
+  --color-art-emerald-dark: #059669;
+  --color-art-blue: #1E3A8A;
+  --color-art-yellow-light: #FEF3C7;
+  --color-art-yellow-border: #FDE68A;
+}
+
+@layer base {
+  body {
+    @apply bg-art-bg text-gray-800;
+  }
+}
+
+.art-dots {
+  background-image: radial-gradient(#D97706 1px, transparent 1px);
+  background-size: 20px 20px;
+}
