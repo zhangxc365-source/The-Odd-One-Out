@@ -311,35 +311,35 @@ export default function App() {
 
   if (state.mode === 'HOME') {
     return (
-      <div className="h-screen bg-art-bg text-art-blue flex flex-col items-center justify-center p-4 font-sans overflow-hidden relative border-4 md:border-8 border-art-amber">
+      <div className="h-[100dvh] bg-art-bg text-art-blue flex flex-col items-center justify-center p-4 font-sans overflow-hidden relative border-4 md:border-8 border-art-amber">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
         <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-art-amber rounded-full opacity-10"></div>
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-art-emerald rounded-full opacity-10"></div>
         
         <motion.div 
-          initial={{ y: -50, opacity: 0 }}
+          initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-center mb-6 md:mb-8 z-10"
+          className="text-center mb-4 md:mb-8 z-10"
         >
-          <div className="flex justify-center mb-4 md:mb-6 space-x-2">
-             <button onClick={() => setState(s => ({ ...s, language: 'en' }))} className={`px-3 py-1.5 rounded-xl font-bold transition-all border-2 text-sm ${state.language==='en' ? 'bg-art-amber text-white border-art-amber-dark shadow-md' : 'bg-white/50 text-art-amber border-art-yellow-border hover:bg-white'}`}>EN</button>
-             <button onClick={() => setState(s => ({ ...s, language: 'mn' }))} className={`px-3 py-1.5 rounded-xl font-bold transition-all border-2 text-sm ${state.language==='mn' ? 'bg-art-emerald text-white border-art-emerald-dark shadow-md' : 'bg-white/50 text-art-emerald border-art-yellow-border hover:bg-white'}`}>MN</button>
+          <div className="flex justify-center mb-3 md:mb-4 lg:mb-6 space-x-2">
+             <button onClick={() => setState(s => ({ ...s, language: 'en' }))} className={`px-3 py-1 rounded-lg font-bold transition-all border-2 text-xs ${state.language==='en' ? 'bg-art-amber text-white border-art-amber-dark shadow-md' : 'bg-white/50 text-art-amber border-art-yellow-border hover:bg-white'}`}>EN</button>
+             <button onClick={() => setState(s => ({ ...s, language: 'mn' }))} className={`px-3 py-1 rounded-lg font-bold transition-all border-2 text-xs ${state.language==='mn' ? 'bg-art-emerald text-white border-art-emerald-dark shadow-md' : 'bg-white/50 text-art-emerald border-art-yellow-border hover:bg-white'}`}>MN</button>
           </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-2 md:mb-3 tracking-tighter text-art-blue drop-shadow-sm font-serif">汉字找不同</h1>
-          <p className="text-lg md:text-xl font-black opacity-60 uppercase tracking-[0.2em] text-art-amber-dark">The Odd One Out</p>
+          <h1 className="text-[clamp(2.5rem,10vh,5rem)] font-black mb-1 md:mb-2 tracking-tighter text-art-blue drop-shadow-sm font-serif leading-none">汉字找不同</h1>
+          <p className="text-[clamp(1rem,3vh,1.5rem)] font-black opacity-60 uppercase tracking-[0.2em] text-art-amber-dark">The Odd One Out</p>
         </motion.div>
 
-        <div className="grid gap-3 md:gap-4 w-full max-w-xs md:max-w-sm z-10">
-          <Button onClick={() => setState(s => ({ ...s, mode: 'LEVEL_SELECT', targetMode: 'ROBOT' }))} className="text-xl md:text-2xl py-4 md:py-6">
-            <Sword className="w-6 h-6 md:w-8 md:h-8" /> {t.robot}
+        <div className="grid gap-2 md:gap-4 w-full max-w-[280px] md:max-w-sm z-10">
+          <Button onClick={() => setState(s => ({ ...s, mode: 'LEVEL_SELECT', targetMode: 'ROBOT' }))} className="text-lg md:text-2xl py-3 md:py-6">
+            <Sword className="w-5 h-5 md:w-8 md:h-8" /> {t.robot}
           </Button>
           <Button variant="secondary" onClick={() => {
             setState(s => ({ ...s, mode: 'LEVEL_SELECT', targetMode: 'PK' }));
-          }} className="text-xl md:text-2xl py-4 md:py-6">
-            <Users className="w-6 h-6 md:w-8 md:h-8" /> {t.pk}
+          }} className="text-lg md:text-2xl py-3 md:py-6">
+            <Users className="w-5 h-5 md:w-8 md:h-8" /> {t.pk}
           </Button>
-          <Button variant="ghost" onClick={() => setState(s => ({ ...s, mode: 'INTRO' }))} className="text-lg md:text-xl py-3 md:py-4">
-            <Info className="w-5 h-5 md:w-6 md:h-6" /> {t.intro}
+          <Button variant="ghost" onClick={() => setState(s => ({ ...s, mode: 'INTRO' }))} className="text-base md:text-xl py-2 md:py-4">
+            <Info className="w-4 h-4 md:w-6 md:h-6" /> {t.intro}
           </Button>
         </div>
       </div>
@@ -382,80 +382,67 @@ export default function App() {
     );
 
     return (
-      <div className="h-screen bg-art-bg flex flex-col md:flex-row p-4 md:p-8 gap-4 md:gap-8 border-4 md:border-8 border-art-amber relative overflow-hidden">
+      <div className="h-[100dvh] bg-art-bg flex flex-col md:flex-row p-2 md:p-6 lg:p-8 gap-2 md:gap-6 border-4 md:border-8 border-art-amber relative overflow-hidden">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
         
-        {/* Section 1: Level List (1x5 Vertical - reduced width) */}
-        <div className="w-full md:w-1/4 flex flex-col items-center z-10 bg-white/40 backdrop-blur-sm p-4 md:p-6 rounded-[2rem] border-4 border-art-yellow-border">
-          <div className="flex flex-col items-center justify-center flex-1 w-full">
-            <h2 className="text-3xl md:text-4xl font-black mb-4 md:mb-8 text-art-blue font-serif italic text-center underline decoration-art-amber decoration-4 md:decoration-8 underline-offset-4 md:underline-offset-8">LEVEL</h2>
-            <div className="flex flex-col w-full gap-2">
+        <div className="w-full md:w-1/4 flex flex-col items-center z-10 bg-white/40 backdrop-blur-sm p-3 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border-4 border-art-yellow-border">
+          <div className="flex flex-col items-center justify-center flex-1 w-full overflow-y-auto">
+            <h2 className="text-xl md:text-3xl font-black mb-3 md:mb-6 text-art-blue font-serif italic text-center underline decoration-art-amber decoration-2 md:decoration-8 underline-offset-4 tracking-tighter">LEVEL</h2>
+            <div className="flex flex-row md:flex-col w-full gap-2 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0">
               {YCT_DATA.map(lv => (
                 <button 
                   key={lv.id}
                   onClick={() => setState(s => ({ ...s, level: lv.id }))}
-                  className={`py-2 md:py-3 rounded-[1rem] md:rounded-[1.5rem] font-black text-xl md:text-2xl transition-all border-2 md:border-4 flex items-center justify-center gap-2 md:gap-4 ${state.level === lv.id ? 'bg-art-amber text-white border-art-amber-dark scale-105 z-10 shadow-lg' : 'bg-white text-art-blue border-art-yellow-border hover:bg-art-yellow-light'}`}
+                  className={`px-4 md:px-0 py-1.5 md:py-3 rounded-lg md:rounded-[1.5rem] font-black text-sm md:text-xl lg:text-2xl transition-all border-2 md:border-4 flex items-center justify-center gap-1 md:gap-4 flex-shrink-0 md:flex-shrink ${state.level === lv.id ? 'bg-art-amber text-white border-art-amber-dark shadow-md' : 'bg-white text-art-blue border-art-yellow-border hover:bg-art-yellow-light'}`}
                 >
                   YCT {lv.id}
                 </button>
               ))}
             </div>
           </div>
-          <div className="mt-4 w-full">
-            <Button variant="ghost" onClick={() => setState(s => ({ ...s, mode: 'HOME' }))} className="w-full text-base md:text-lg py-2 md:py-3">
-              <ChevronLeft className="w-5 h-5 mr-1" /> {t.back}
+          <div className="mt-3 md:mt-4 w-full">
+            <Button variant="ghost" onClick={() => setState(s => ({ ...s, mode: 'HOME' }))} className="w-full text-xs md:text-lg py-2 md:py-3 h-auto min-h-0">
+              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 mr-1" /> {t.back}
             </Button>
           </div>
         </div>
 
-        {/* Section 2: Character Pairs Selection (increased width) */}
-        <div className="w-full md:w-3/4 flex flex-col z-10 bg-white border-4 md:border-8 border-art-yellow-border p-4 md:p-6 rounded-[2rem] md:rounded-[3.5rem] shadow-2xl relative overflow-hidden">
-          <div className="flex justify-between items-center mb-4 md:mb-6 pb-4 border-b-2 md:border-b-4 border-art-bg">
-            <h2 className="text-3xl md:text-4xl font-black text-art-emerald font-serif italic leading-tight">{state.language === 'mn' ? 'Хятад ханз' : 'Chinese Character'}</h2>
-            <div className="flex flex-col items-center">
-              <button 
-                onClick={() => {
-                   const currentLevelData = YCT_DATA.find(lv => lv.id === state.level);
-                   const allPairs = currentLevelData?.lessons.flatMap(l => l.pairs) || [];
-                   const randomPair = allPairs[Math.floor(Math.random() * allPairs.length)];
-                   if (randomPair) startGameWithPair(randomPair, state.targetMode);
-                }}
-                className="bg-art-amber text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-black shadow-lg hover:bg-art-amber-dark transition-all flex items-center gap-2 md:gap-3 transform hover:scale-105 active:scale-95"
-              >
-                 <Zap className="w-5 h-5 md:w-6 md:h-6 fill-white" />
-                 <span className="text-sm md:text-base uppercase tracking-widest">{t.random}</span>
-              </button>
-            </div>
+        <div className="w-full md:w-3/4 flex flex-col z-10 bg-white border-4 md:border-8 border-art-yellow-border p-3 md:p-6 rounded-[1.5rem] md:rounded-[3.5rem] shadow-2xl relative overflow-hidden flex-1">
+          <div className="flex justify-between items-center mb-3 md:mb-6 pb-2 md:pb-4 border-b-2 border-art-bg">
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-art-emerald font-serif italic leading-none">{state.language === 'mn' ? 'Хятад ханз' : 'Chinese Character'}</h2>
+            <button 
+              onClick={() => {
+                 const currentLevelData = YCT_DATA.find(lv => lv.id === state.level);
+                 const allPairs = currentLevelData?.lessons.flatMap(l => l.pairs) || [];
+                 const randomPair = allPairs[Math.floor(Math.random() * allPairs.length)];
+                 if (randomPair) startGameWithPair(randomPair, state.targetMode);
+              }}
+              className="bg-art-amber text-white px-4 md:px-8 py-2 md:py-3 rounded-full font-black shadow-lg hover:bg-art-amber-dark transition-all flex items-center gap-1 md:gap-3 text-xs md:text-base"
+            >
+               <Zap className="w-4 h-4 md:w-6 md:h-6 fill-white" />
+               <span>{t.random}</span>
+            </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto pr-2 flex-1 scrollbar-thin scrollbar-thumb-art-amber p-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 overflow-y-auto pr-2 flex-1 scrollbar-thin scrollbar-thumb-art-amber">
             {uniquePairs.map((pair, i) => (
               <button 
                 key={i}
                 onClick={() => startGameWithPair(pair, state.targetMode)}
-                className="bg-white hover:bg-art-yellow-light/10 p-3 md:p-4 rounded-[1.5rem] md:rounded-[2rem] border-2 md:border-4 border-art-yellow-border hover:border-art-emerald transition-all flex items-center justify-between group shadow-md hover:shadow-xl active:scale-95 gap-3"
+                className="bg-white hover:bg-art-yellow-light/10 p-2 md:p-4 rounded-xl md:rounded-[2rem] border-2 md:border-4 border-art-yellow-border hover:border-art-emerald transition-all flex items-center justify-between group shadow-sm hover:shadow-md active:scale-95 transition-all"
               >
-                {/* Left: Target */}
                 <div className="flex-1 flex flex-col items-center">
-                  <div className="text-[14px] md:text-[16px] font-black text-art-emerald-dark lowercase tracking-tight leading-none mb-1">{pair.pinyin.toLowerCase()}</div>
-                  <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-black group-hover:scale-110 transition-transform mb-1">{pair.target}</div>
-                  <div className="text-[12px] md:text-[14px] font-bold text-gray-500 truncate w-full text-center leading-tight italic">
+                  <div className="text-[10px] md:text-[14px] font-black text-art-emerald-dark lowercase leading-none mb-1">{pair.pinyin.toLowerCase()}</div>
+                  <div className="text-3xl md:text-5xl lg:text-6xl font-serif text-black group-hover:scale-105 transition-transform">{pair.target}</div>
+                  <div className="text-[10px] md:text-[14px] font-bold text-gray-500 truncate w-full text-center italic">
                     {state.language === 'mn' ? pair.translation.mn : pair.translation.en}
                   </div>
                 </div>
-
-                {/* VS Divider */}
-                <div className="flex flex-col items-center">
-                   <div className="w-px h-6 bg-gray-100"></div>
-                   <span className="text-sm font-black text-gray-300 my-1 italic">VS</span>
-                   <div className="w-px h-6 bg-gray-100"></div>
-                </div>
-
-                {/* Right: Distractor */}
+                <div className="px-2 opacity-20"><div className="w-px h-8 md:h-12 bg-black"></div></div>
                 <div className="flex-1 flex flex-col items-center">
-                  <div className="text-[14px] md:text-[16px] font-black text-gray-500 lowercase tracking-tight leading-none mb-1">{pair.distractorPinyin.toLowerCase()}</div>
-                  <div className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-400 group-hover:scale-110 transition-transform mb-1">{pair.distractor}</div>
-                  <div className="text-[12px] md:text-[14px] font-bold text-gray-400 truncate w-full text-center leading-tight italic">
+                  <div className="text-[10px] md:text-[14px] font-black text-gray-400 lowercase leading-none mb-1">{pair.distractorPinyin.toLowerCase()}</div>
+                  <div className="text-3xl md:text-5xl lg:text-6xl font-serif text-gray-400 group-hover:scale-105 transition-transform">{pair.distractor}</div>
+                  <div className="text-[10px] md:text-[14px] font-bold text-gray-400 truncate w-full text-center italic">
                     {state.language === 'mn' ? pair.distractorTranslation.mn : pair.distractorTranslation.en}
                   </div>
                 </div>
@@ -469,58 +456,55 @@ export default function App() {
 
   if (state.mode === 'PREPARE') {
     return (
-      <div className="h-screen bg-art-bg text-art-blue flex flex-col items-center justify-between py-6 md:py-8 px-4 md:px-8 border-4 md:border-8 border-art-amber relative overflow-hidden">
+      <div className="h-[100dvh] bg-art-bg text-art-blue flex flex-col items-center p-2 md:p-6 border-4 md:border-8 border-art-amber relative overflow-hidden">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
         
-        {/* Top Left Label */}
-        <div className="absolute top-4 left-4 md:top-8 md:left-8">
-           <div className="text-[8px] md:text-[10px] font-black opacity-30 uppercase tracking-[0.2em] leading-none mb-1">Chinese Character</div>
-           <div className="text-xl md:text-3xl font-mono font-black text-art-blue">YCT{state.level}</div>
+        <div className="absolute top-4 left-4 md:top-8 md:left-8 flex items-center gap-2">
+           <div className="text-[clamp(1.5rem,5vh,3rem)] font-mono font-black text-art-blue bg-white px-4 py-1 rounded-xl shadow-sm border-2 border-art-yellow-border">YCT{state.level}</div>
         </div>
 
-        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center z-10 w-full max-w-5xl flex flex-col items-center flex-1 justify-center py-4">
-          <h2 className="text-3xl md:text-5xl font-black mb-6 md:mb-10 bg-white border-2 md:border-4 border-art-yellow-border px-8 md:px-12 py-3 md:py-4 rounded-full shadow-xl font-serif italic inline-block leading-none">{t.prepare_title}</h2>
+        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="flex-1 w-full max-w-5xl flex flex-col items-center justify-center p-2 z-10">
+          <h2 className="text-[clamp(1.5rem,5vh,3rem)] font-black mb-4 md:mb-8 bg-white border-2 md:border-4 border-art-yellow-border px-6 md:px-12 py-2 md:py-4 rounded-full shadow-xl font-serif italic inline-block leading-none">{t.prepare_title}</h2>
           
-          <div className="flex items-center justify-center gap-4 md:gap-12 lg:gap-20 mb-6 md:mb-10 px-2 md:px-4 w-full">
-            {/* Left: Distractor */}
-            <div className="flex-1 flex flex-col items-center bg-white p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] border-2 md:border-4 border-art-yellow-border shadow-xl transform -rotate-2 transition-all hover:rotate-0">
-               <div className="text-[12px] md:text-[16px] font-black text-gray-400 lowercase mb-1 tracking-wide">{activeSessionPair?.distractorPinyin.toLowerCase()}</div>
-               <div className="text-6xl md:text-[8rem] lg:text-[10rem] font-serif text-gray-700 relative leading-none">
+          <div className="flex items-center justify-center gap-2 md:gap-12 lg:gap-20 mb-4 md:mb-10 px-0 w-full">
+            {/* Left: Distractor Card (Shrinked) */}
+            <div className="flex-1 flex flex-col items-center bg-white p-2 md:p-6 rounded-2xl md:rounded-[3rem] border-2 md:border-4 border-art-yellow-border shadow-md transform -rotate-1">
+               <div className="text-[10px] md:text-[16px] font-black text-gray-400 lowercase mb-1 leading-none">{activeSessionPair?.distractorPinyin.toLowerCase()}</div>
+               <div className="text-[clamp(3.5rem,15vh,8rem)] font-serif text-gray-700 leading-none">
                   {activeSessionPair?.distractor}
                </div>
-               <div className="text-[10px] md:text-sm font-bold text-gray-400 italic mt-2">
+               <div className="text-[10px] md:text-sm font-bold text-gray-400 italic mb-1">
                   {state.language === 'mn' ? activeSessionPair?.distractorTranslation.mn : activeSessionPair?.distractorTranslation.en}
                </div>
-               <span className="text-[8px] md:text-[10px] font-black uppercase tracking-widest mt-2 text-gray-300 bg-gray-50 px-2 py-0.5 rounded-full">Distractor</span>
+               <span className="text-[8px] md:text-[10px] font-black uppercase text-gray-300 bg-gray-50 px-2 py-0.5 rounded-full">Distractor</span>
             </div>
             
-            <div className="text-4xl md:text-6xl lg:text-8xl text-art-emerald-dark font-black tracking-tighter drop-shadow-[4px_4px_0_rgba(16,185,129,0.3)] leading-none">VS</div>
+            <div className="text-2xl md:text-6xl font-black tracking-tighter text-art-emerald-dark animate-pulse leading-none italic">VS</div>
             
-            {/* Right: Target */}
-            <div className="flex-1 flex flex-col items-center bg-white p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] border-2 md:border-4 border-art-emerald shadow-lg transform rotate-1 relative group bg-art-yellow-light/10">
-               <div className="text-[32px] md:text-[48px] font-black text-art-emerald-dark lowercase mb-2 md:mb-4 tracking-tighter leading-none">{activeSessionPair?.pinyin.toLowerCase()}</div>
-               <div className="text-6xl md:text-[10rem] lg:text-[12rem] font-serif text-art-blue font-black relative group leading-none">
-                  <span className="relative z-10">{activeSessionPair?.target}</span>
-                  <div className="absolute inset-0 bg-art-emerald/10 blur-3xl scale-125"></div>
+            {/* Right: Target Card (Emerald Glow/Reduced) */}
+            <div className="flex-1 flex flex-col items-center bg-white p-2 md:p-6 rounded-2xl md:rounded-[3rem] border-2 md:border-4 border-art-emerald shadow-lg transform rotate-1 bg-art-yellow-light/10">
+               <div className="text-[clamp(1rem,4vh,3rem)] font-black text-art-emerald-dark lowercase mb-1 leading-none">{activeSessionPair?.pinyin.toLowerCase()}</div>
+               <div className="text-[clamp(4.5rem,20vh,10rem)] font-serif text-art-blue font-black relative leading-none">
+                  {activeSessionPair?.target}
                </div>
-               <div className="text-lg md:text-2xl font-black text-art-emerald italic mt-2 md:mt-4">
+               <div className="text-[clamp(0.875rem,3vh,1.5rem)] font-black text-art-emerald italic leading-none mb-2 text-center">
                   {state.language === 'mn' ? activeSessionPair?.translation.mn : activeSessionPair?.translation.en}
                </div>
-               <span className="text-[10px] md:text-[14px] font-black uppercase tracking-widest mt-2 md:mt-4 text-art-emerald-dark bg-art-emerald/10 px-4 md:px-6 py-1 md:py-2 rounded-full">{t.prepare_desc}</span>
+               <span className="text-[8px] md:text-[12px] font-black uppercase tracking-wider text-art-emerald-dark bg-art-emerald/10 px-3 py-1 rounded-full">{t.prepare_desc}</span>
             </div>
           </div>
  
-          <div className="bg-white border-2 md:border-4 border-art-amber px-6 md:px-10 py-3 md:py-5 rounded-2xl md:rounded-3xl shadow-lg mb-6 md:mb-10 max-w-2xl mx-auto border-dashed relative">
-             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2 md:px-4 text-[8px] md:text-[10px] font-black text-art-amber uppercase tracking-widest">Analysis</div>
-            <p className="text-base md:text-2xl font-black text-art-blue italic leading-tight text-center">
-               {activeSessionPair?.difference}
-            </p>
+          <div className="bg-white border-2 border-art-amber px-4 md:px-10 py-2 md:py-4 rounded-xl md:rounded-3xl shadow-lg mb-6 md:mb-10 max-w-2xl mx-auto border-dashed relative">
+             <div className="absolute -top-2.5 left-1/2 -track-x-1/2 bg-white px-2 text-[8px] md:text-[10px] font-black text-art-amber uppercase">Analysis</div>
+             <p className="text-sm md:text-xl font-bold text-art-blue italic leading-tight text-center">
+                {activeSessionPair?.difference}
+             </p>
           </div>
 
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full max-w-lg px-4">
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full max-w-[280px] md:max-w-lg sticky bottom-2">
              <Button 
                onClick={startActualPlay} 
-               className="text-3xl md:text-5xl lg:text-6xl w-full py-4 md:py-8 lg:py-10 bg-art-yellow text-art-blue border-art-yellow-border shadow-[4px_6px_0_rgba(255,221,0,0.4)] transform transition-all hover:-translate-y-1 font-black"
+               className="text-xl md:text-5xl lg:text-6xl w-full py-4 md:py-8 lg:py-10 bg-art-yellow text-art-blue border-art-yellow-border shadow-[4px_6px_0_rgba(255,221,0,0.4)] font-black"
              >
                {t.start}
              </Button>
@@ -824,15 +808,15 @@ export default function App() {
     }
     
     return (
-      <div className="h-screen bg-art-bg text-art-blue flex flex-col items-center justify-center p-4 md:p-6 border-4 md:border-8 border-art-amber relative overflow-hidden">
+      <div className="h-[100dvh] bg-art-bg text-art-blue flex flex-col items-center justify-center p-4 md:p-6 border-4 md:border-8 border-art-amber relative overflow-hidden">
         <div className="absolute inset-0 art-dots opacity-10 pointer-events-none"></div>
         <motion.div 
           initial={{ y: 50, opacity: 0 }} 
           animate={{ y: 0, opacity: 1 }}
           className="w-full max-w-2xl text-center z-10 scale-90 md:scale-100"
         >
-          <div className="mb-2 md:mb-4">
-             <h1 className="text-5xl md:text-7xl font-black tracking-tighter font-serif italic text-art-blue shadow-white drop-shadow-md">{resultTitle}</h1>
+          <div className="mb-1 md:mb-4">
+             <h1 className="text-[clamp(1.5rem,7vh,4rem)] font-black tracking-tighter font-serif italic text-art-blue shadow-white drop-shadow-md leading-none">{resultTitle}</h1>
           </div>
           
           <div className="grid grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-10">
@@ -878,15 +862,15 @@ export default function App() {
              </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <Button variant="ghost" className="py-3 md:py-4" onClick={() => setState(s => ({ ...s, mode: 'HOME' }))}>
-              <HomeIcon className="w-5 h-5 md:w-6 md:h-6" /> {t.home}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 w-full mt-auto">
+            <Button variant="ghost" className="py-2 md:py-4 h-auto text-xs md:text-lg" onClick={() => setState(s => ({ ...s, mode: 'HOME' }))}>
+              <HomeIcon className="w-4 h-4 md:w-6 md:h-6" /> {t.home}
             </Button>
-            <Button variant="secondary" className="py-3 md:py-4" onClick={() => startActualPlay()}>
-              <RefreshCw className="w-5 h-5 md:w-6 md:h-6" /> {t.retry}
+            <Button variant="secondary" className="py-2 md:py-4 h-auto text-xs md:text-lg" onClick={() => startActualPlay()}>
+              <RefreshCw className="w-4 h-4 md:w-6 md:h-6" /> {t.retry}
             </Button>
-            <Button className="py-3 md:py-4" onClick={() => setState(s => ({ ...s, mode: 'LEVEL_SELECT' }))}>
-              <Zap className="w-5 h-5 md:w-6 md:h-6" /> {t.next}
+            <Button className="py-2 md:py-4 h-auto text-xs md:text-lg" onClick={() => setState(s => ({ ...s, mode: 'LEVEL_SELECT' }))}>
+              <Zap className="w-4 h-4 md:w-6 md:h-6" /> {t.next}
             </Button>
           </div>
         </motion.div>
